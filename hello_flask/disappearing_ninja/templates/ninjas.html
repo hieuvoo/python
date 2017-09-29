@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Turtle</title>
+</head>
+<body>
+    {% if color == 'purple' %}
+        <img src="{{ url_for('static', filename='images/donatello.jpg')}}">
+        {% endif %}
+        {% if color == 'blue' %}
+        <img src="{{ url_for('static', filename='images/leonardo.jpg')}}">
+        {% endif %}
+        {% if color == 'orange' %}
+        <img src="{{ url_for('static', filename='images/michelangelo.jpg')}}">
+        {% endif %}
+        {% if color == 'red' %}
+        <img src="{{ url_for('static', filename='images/raphael.jpg')}}">
+        {% endif %}
+        {% if color != 'purple' and color != 'blue' and color != 'orange' and color != 'red' %}
+        <img src="{{ url_for('static', filename='images/notapril.jpg')}}">
+        {% endif %}
+</body>
+</html>

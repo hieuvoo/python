@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>The Great Number Game</title>
+        <meta name='description' content='The Great Number Game assignment for Coding Dojo'>
+        <style type="text/css">
+            body {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome to the Great Number Game!</h1>
+        <p>I am thinking of a number between 1 and 100</p>
+        <p>Take a guess!</p>
+        {% if check == "low" %}
+        <p>Too Low</p>
+        {% endif %}
+        {% if check == "high" %}
+        <p>Too high</p>
+        {% endif %}
+        {% if check == "low" or check =="high" %}
+        <form action='/guess' method='post'>
+            <input type='text' name='guess'>
+            <input type='submit' value='Submit'>
+        </form>
+        {% endif %}
+        {% if check == "correct" %}
+        <p>CORRECT!</p>
+        <a href='/'><button name="reset">Reset</button></a>
+        {% endif %}
+    </body>
+</html>

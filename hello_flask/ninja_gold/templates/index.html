@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>Ninja Gold</title>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h1>Your Gold: {{session['gold']}}</h1>
+            <div class="places">
+                <h2>Farm</h2>
+                <p>(earns 10-20 golds)</p>
+                <form action="/process" method="post">
+                    <input type="hidden" name="place" value="farm">
+                    <input type="submit" value="Find Gold">
+                </form>
+            </div>
+            <div class="places">
+                <h2>Cave</h2>
+                <p>(earns 5-10 golds)</p>
+                <form action="/process" method="post">
+                    <input type="hidden" name="place" value="cave">
+                    <input type="submit" value="Find Gold">
+                </form>
+            </div>
+            <div class="places">
+                <h2>House</h2>
+                <p>(earns 2-5 golds)</p>
+                <form action="/process" method="post">
+                    <input type="hidden" name="place" value="house">
+                    <input type="submit" value="Find Gold">
+                </form>
+            </div>
+            <div class="places">
+                <h2>Casino</h2>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action="/process" method="post">
+                    <input type="hidden" name="place" value="casino">
+                    <input type="submit" value="Find Gold">
+                </form>
+            </div>
+            <div id="activities">
+                <h2>Activities:</h2>
+                <ul>
+                {% for x in session['activities']|reverse %}
+                  {% if x[:4] == 'Lost' %}
+                    <li style="color: red;">{{ x }}</li>
+                  {% else %}
+                    <li style="color: green;">{{ x }}</li>
+                  {% endif %}
+                {% endfor %}
+                </ul>
+            </div>
+            <div id="reset">
+                <a href="/reset"><button>Reset</button></a>
+            </div>
+        </div>
+    </body>
+</html>
