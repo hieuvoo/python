@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Private Messages</title>
+</head>
+<body>
+    <h1>Private Messages</h1>
+
+<h3>User Registration</h3>
+<form action="/user_register" method='post'> 
+    {% csrf_token %} <!-- Prevents cross-site request forgery (place it in a form on the HTML/template side of your project) -->
+    <input type="text" name="username" placeholder="Username"><br>
+    <input type="text" name="email" placeholder="Email"><br>
+    <input type="password" name="password" placeholder="Password"><br>
+    <input type="password" name="c_password" placeholder="Confirm password"><br>
+    <input type="submit" value='Register'>
+</form>
+
+<h3>Login</h3>
+<form action="/user_login" method='post'> 
+    {% csrf_token %} <!-- Prevents cross-site request forgery (place it in a form on the HTML/template side of your project) -->
+    <input type="text" name="email" placeholder="Email"><br>
+    <input type="password" name="password" placeholder="Password"><br>
+    <input type="submit" value='Login'>
+</form>
+
+<div class='col-sm-12'>
+    {% if messages %}
+        <br>
+        {% for message in messages %}
+            <div class='alert alert-danger alert-dismissable'>
+                <a href="" class='close' data-dismiss='alert' aria-label='close'>x</a>
+                {{message}}        
+            </div>
+        {% endfor %}
+    {% endif %}
+<div>
+
+</body>
+</html>
