@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Wall</title>
+    <style>
+    .comment {
+        margin-left:15px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Wall, {{l_user.first_name}}</h1>
+    <a href="/logout">Logout</a> 
+    <hr>
+    <form action="/create_message" method="Post">
+        <p><textarea rows='10' cols='50' name="message"></textarea></p>
+        <p><input type="submit" value='Add a message'></p>
+    </form>
+    <hr>
+
+    {% for message in messages %}
+       <p>{{message.message}}</p>
+       <p>{{message.first_name}} {{message.last_name}} - {{message.created_at}}</p>
+
+       {% for comment in comments %}
+         {% if comment.message_id == message.m_id %}
+         <p class='comment'>{{comment.comment}}</p>
+         <p class='comment'>>{{comment.first_name}} {{comment.last_name}} - {{comment.created_at}}</p>
+         {% endif %}
+       {% endfor %} 
+       
+       <form action="/create_comments" method="Post">
+         <input type="hidden" name="message_id" value="{{message.m_id}}">
+         <p><textarea rows='5' cols='25' name="comment"></textarea></p>
+         <p><input type="submit" value='Add a comment'></p>
+       </form>
+    {% endfor %} 
+        
+</body>
+</html>

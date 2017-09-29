@@ -1,0 +1,17 @@
+body {
+    padding: 20px;
+    width: 1200px;
+}
+#error {
+    color: red;
+}
+.green_text {
+    color: green;
+}
+.blue_text {
+    color: blue;
+}
+/* Hieu's CSS codes */
+body, h1{
+  justify-content: center;
+}
